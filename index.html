@@ -78,6 +78,31 @@
       from { top: 0; }
       to { top: 100%; }
     }
+
+    details {
+  margin-top: 40px;
+  border: 1px solid #00ff9c;
+  padding: 15px 25px;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0,255,156,0.4);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details p {
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
   </style>
 </head>
 
@@ -100,6 +125,15 @@
        target="_blank">
        SUBMIT A REQUEST
     </a>
+
+    <details>
+  <summary>⚠ EMERGENCY CONTACT</summary>
+  <p>
+    Call immediately:<br />
+    <strong>(555) 123-4567</strong>
+  </p>
+</details>
+
   </div>
 </body>
 </html>
