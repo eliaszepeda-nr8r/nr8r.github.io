@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>NARRATOR IT</title>
+  <title>NARRATOR I.T</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
@@ -16,16 +16,33 @@
       overflow: hidden;
     }
 
-    .grid {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background:
-        linear-gradient(rgba(0,255,156,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,156,0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-    }
+    .matrix-vortex {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at center,
+      rgba(0,255,156,0.15),
+      rgba(0,0,0,0.95) 60%),
+    repeating-radial-gradient(
+      circle,
+      rgba(0,255,156,0.08) 0px,
+      rgba(0,255,156,0.08) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+  animation: vortex 40s linear infinite;
+  filter: blur(0.3px);
+}
+
+@keyframes vortex {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(360deg) scale(1.2);
+  }
+}
+
 
     .container {
       position: relative;
@@ -107,11 +124,11 @@ details p {
 </head>
 
 <body>
-  <div class="grid"></div>
+  <div class="matrix-vortex"></div>
   <div class="scanline"></div>
 
   <div class="container">
-    <h1>NARRATOR IT</h1>
+    <h1>NARRATOR I.T</h1>
     <p>Click a button to get redirected</p>
 
     <a class="button"
