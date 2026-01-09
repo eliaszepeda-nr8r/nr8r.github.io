@@ -16,32 +16,42 @@
       overflow: hidden;
     }
 
-    .matrix-vortex {
+    .tron-grid {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at center,
-      rgba(0,255,156,0.15),
-      rgba(0,0,0,0.95) 60%),
-    repeating-radial-gradient(
-      circle,
-      rgba(0,255,156,0.08) 0px,
-      rgba(0,255,156,0.08) 1px,
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,255,200,0.08) 0px,
+      rgba(0,255,200,0.08) 1px,
       transparent 1px,
-      transparent 6px
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,255,200,0.08) 0px,
+      rgba(0,255,200,0.08) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(0,255,200,0.25),
+      rgba(0,0,0,0.95) 65%
     );
-  animation: vortex 40s linear infinite;
-  filter: blur(0.3px);
+  animation: tron-spin 60s linear infinite;
+  transform-origin: center;
 }
 
-@keyframes vortex {
+@keyframes tron-spin {
   from {
     transform: rotate(0deg) scale(1);
   }
   to {
-    transform: rotate(360deg) scale(1.2);
+    transform: rotate(360deg) scale(1.15);
   }
 }
+
 
 
     .container {
@@ -124,7 +134,8 @@ details p {
 </head>
 
 <body>
-  <div class="matrix-vortex"></div>
+  
+  <div class="tron-grid"></div>
   <div class="scanline"></div>
 
   <div class="container">
