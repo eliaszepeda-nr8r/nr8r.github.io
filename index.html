@@ -16,39 +16,62 @@
       overflow: hidden;
     }
 
-    .tron-grid {
+   
+.tron-tunnel {
   position: fixed;
-  inset: 0;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
   background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,255,200,0.08) 0px,
-      rgba(0,255,200,0.08) 1px,
+    repeating-radial-gradient(
+      circle,
+      rgba(0,255,200,0.15) 0px,
+      rgba(0,255,200,0.15) 1px,
       transparent 1px,
-      transparent 40px
+      transparent 60px
     ),
     repeating-linear-gradient(
       90deg,
       rgba(0,255,200,0.08) 0px,
       rgba(0,255,200,0.08) 1px,
       transparent 1px,
-      transparent 40px
-    ),
-    radial-gradient(
-      circle at center,
-      rgba(0,255,200,0.25),
-      rgba(0,0,0,0.95) 65%
+      transparent 60px
     );
-  animation: tron-spin 60s linear infinite;
   transform-origin: center;
+  animation:
+    boot-in 2.5s ease-out forwards,
+    tunnel-move 20s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(0,255,200,0.2));
 }
 
-@keyframes tron-spin {
+    @keyframes tunnel-move {
   from {
-    transform: rotate(0deg) scale(1);
+    transform: perspective(800px)
+      rotateX(65deg)
+      rotateZ(0deg)
+      scale(1);
   }
   to {
-    transform: rotate(360deg) scale(1.15);
+    transform: perspective(800px)
+      rotateX(65deg)
+      rotateZ(360deg)
+      scale(1.4);
+  }
+}
+
+    @keyframes boot-in {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -135,7 +158,7 @@ details p {
 
 <body>
   
-  <div class="tron-grid"></div>
+  <div class="tron-tunnel"></div>
   <div class="scanline"></div>
 
   <div class="container">
