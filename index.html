@@ -16,66 +16,6 @@
       overflow: hidden;
     }
 
-   
-.tron-tunnel {
-  position: fixed;
-  top: -150%;
-  left: -150%;
-  width: 400%;
-  height: 400%;
-  background:
-    repeating-radial-gradient(
-      circle,
-      rgba(0,255,200,0.15) 0px,
-      rgba(0,255,200,0.15) 1px,
-      transparent 1px,
-      transparent 60px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(0,255,200,0.08) 0px,
-      rgba(0,255,200,0.08) 1px,
-      transparent 1px,
-      transparent 60px
-    );
-  transform-origin: center;
-  animation:
-    boot-in 2.5s ease-out forwards,
-    tunnel-move 20s linear infinite;
-  filter: drop-shadow(0 0 20px rgba(0,255,200,0.2));
-}
-
-    @keyframes tunnel-move {
-  from {
-    transform: perspective(800px)
-      rotateX(65deg)
-      rotateZ(0deg)
-      scale(1);
-  }
-  to {
-    transform: perspective(800px)
-      rotateX(65deg)
-      rotateZ(360deg)
-      scale(1.4);
-  }
-}
-
-    @keyframes boot-in {
-  0% {
-    opacity: 0;
-    filter: blur(8px);
-    transform: scale(0.9);
-  }
-  60% {
-    opacity: 1;
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-
 
     .container {
       position: relative;
@@ -153,12 +93,75 @@ details p {
   font-size: 1.1rem;
 }
 
+    @keyframes portal-dive {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.35);
+  }
+}
+
+@keyframes portal-spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+    @keyframes portal-boot {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  40% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+    
+    .tron-portal {
+  position: fixed;
+  inset: -200%;
+  background:
+    repeating-radial-gradient(
+      circle,
+      rgba(0,255,160,0.35) 0px,
+      rgba(0,255,160,0.35) 1px,
+      transparent 1px,
+      transparent 48px
+    ),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(0,255,160,0.25) 0deg,
+      rgba(0,255,160,0.25) 1deg,
+      transparent 1deg,
+      transparent 12deg
+    );
+  animation:
+    portal-spin 40s linear infinite,
+    portal-dive 10s linear infinite,
+    portal-boot 2.5s ease-out forwards;
+  filter:
+    drop-shadow(0 0 25px rgba(0,255,160,0.4))
+    blur(0.2px);
+  transform-origin: center;
+}
+
+
   </style>
 </head>
 
 <body>
   
-  <div class="tron-tunnel"></div>
+ <div class="tron-portal"></div>
   <div class="scanline"></div>
 
   <div class="container">
